@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AnimalForm = ({ addAnimalFunc }) => {
+  const navigate= useNavigate();
   const [animal, setAnimal] = useState({
     name: "",
     species: "",
@@ -19,6 +21,7 @@ const AnimalForm = ({ addAnimalFunc }) => {
   const submitHandler = (e) => {
     e.preventDefault(); // Prevent form submission
     addAnimalFunc(animal);
+    navigate("/animals");
   };
 
   return (

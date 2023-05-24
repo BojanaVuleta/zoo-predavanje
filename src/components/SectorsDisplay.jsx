@@ -1,31 +1,29 @@
-const animalSector = ["bird", "snake"];
-export default function SectorsDisplay({ animalList }) {
-  const showAnimals = (sectorName) => {
-    alert(
-      animalList
-        .filter((animal) => animal.sector === sectorName)
-        .map((animal) => animal.name)
-    );
-  };
+import { Link } from "react-router-dom";
+
+export default function SectorsDisplay({animalSector}) {
+
   return (
+    <div>
     <table>
       <thead>
         <tr>
           <th>Ime sektora</th>
-          <th>Show</th>
+          
         </tr>
       </thead>
-      <tbody>
+      <tbody class="center">
         {animalSector.map((sector, index) => (
           // pozovi hook
           <tr key={index}>
-            <td>{sector}</td>
+          
+            <td>{sector.name}</td>
             <td>
-              <button onClick={() => showAnimals(sector)}>Show</button>
+              <Link to={`/sectors/${sector.id}`}><button>Show</button></Link>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
+    </div>
   );
 }
